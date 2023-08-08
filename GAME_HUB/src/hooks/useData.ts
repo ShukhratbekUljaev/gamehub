@@ -9,6 +9,7 @@ interface FetchResponse<T> {
     count: number;
     results: T[];
 }
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {
     const [data, setData] = useState<T[]>([]);
     const [error, setError] = useState("");
@@ -29,6 +30,7 @@ const controller = new AbortController();
             setLoading(false)
           });
         return () => controller.abort();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, deps ? [...deps] : []);
 
 
